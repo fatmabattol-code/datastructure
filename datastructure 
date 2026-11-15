@@ -15,27 +15,61 @@ class Stack {
             System.out.println(x + " push ho gaya.");
         }
     }
+Q2. Stack Tracing
 
-    // Pop - Element nikalna
-    void pop() {
-        if (top == -1) {
-            System.out.println("Stack Underflow! Stack khali hai.");
-        } else {
-            System.out.println(arr[top] + " pop ho gaya.");
-            top--;
+*Initial Stack: Empty*
+
+Operations:
+1. Push(10)
+2. Push(20)
+3. Push(30)
+4. Pop()
+5. Push(40)
+6. Pop()
+
+1	Push(10)	10 inserted	**[10]**
+2	Push(20)	20 inserted on top	**[10, 20]**
+3	Push(30)	30 inserted on top	**[10, 20, 30]**
+4	Pop()	30 removed (LIFO)	**[10, 20]**
+5	Push(40)	40 inserted on top	**[10, 20, 40]**
+6	Pop()	40 removed (LIFO)	**[10, 20]**
+*Final Answer Q2:*
+- *Final Stack Contents: 10, 20*
+- *Top Element: 20*
+
+
+
+---
+
+ Q4. Queue Tracing - Separate Solution
+
+*Initial Queue: Empty
+
+Operations:
+1. Enqueue(10)
+2. Enqueue(20)
+3. Enqueue(30)
+4. Dequeue()
+5. Enqueue(40)
+6. Dequeue()
+
+
+1	Enqueue(10)	10 inserted at rear	**[10]**
+2	Enqueue(20)	20 inserted at rear	**[10, 20]**
+3	Enqueue(30)	30 inserted at rear	**[10, 20, 30]**
+4	Dequeue()	10 removed from front (FIFO)	**[20, 30]**
+5	Enqueue(40)	40 inserted at rear	**[20, 30, 40]**
+6	Dequeue()	20 removed from front (FIFO)	**[30, 40]**
+*Final Answer Q4:*
+- *Final Queue Contents: 30, 40*
+- *Front Element: 30*
+
+
+
         }
     }
 
-    // Peek - Top dekhna
-    void peek() {
-        if (top == -1) {
-            System.out.println("Stack khali hai.");
-        } else {
-            System.out.println("Top element: " + arr[top]);
-        }
-    }
-
-    // Display - Sab dikhana
+    
     void display() {
         if (top == -1) {
             System.out.println("Stack khali hai.");
