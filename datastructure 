@@ -1,0 +1,161 @@
+import java.util.Scanner;
+
+class Stack {
+    int top = -1;
+    int size = 5;
+    int[] arr = new int[size];
+
+    // Push - Element daalna
+    void push(int x) {
+        if (top == size - 1) {
+            System.out.println("Stack Overflow! Stack full hai.");
+        } else {
+            top++;
+            arr[top] = x;
+            System.out.println(x + " push ho gaya.");
+        }
+    }
+
+    // Pop - Element nikalna
+    void pop() {
+        if (top == -1) {
+            System.out.println("Stack Underflow! Stack khali hai.");
+        } else {
+            System.out.println(arr[top] + " pop ho gaya.");
+            top--;
+        }
+    }
+
+    // Peek - Top dekhna
+    void peek() {
+        if (top == -1) {
+            System.out.println("Stack khali hai.");
+        } else {
+            System.out.println("Top element: " + arr[top]);
+        }
+    }
+
+    // Display - Sab dikhana
+    void display() {
+        if (top == -1) {
+            System.out.println("Stack khali hai.");
+        } else {
+            System.out.println("Stack elements (top se neeche):");
+            for (int i = top; i >= 0; i--) {
+                System.out.println(arr[i]);
+            }
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Stack s = new Stack();
+        int choice, value;
+
+        while (true) {
+            System.out.println("\n1.Push  2.Pop  3.Peek  4.Display  5.Exit");
+            System.out.print("Choice: ");
+            choice = sc.nextInt();
+
+            if (choice == 1) {
+                System.out.print("Value daalo: ");
+                value = sc.nextInt();
+                s.push(value);
+            } else if (choice == 2) {
+                s.pop();
+            } else if (choice == 3) {
+                s.peek();
+            } else if (choice == 4) {
+                s.display();
+            } else if (choice == 5) {
+                break;
+            }
+        }
+    }
+}
+
+
+task 2
+
+
+import java.util.Scanner;
+
+class Queue {
+    int front = -1, rear = -1;
+    int size = 5;
+    int[] arr = new int[size];
+
+    // Enqueue - Peeche se daalna
+    void enqueue(int x) {
+        if (rear == size - 1) {
+            System.out.println("Queue Overflow! Queue full hai.");
+        } else {
+            if (front == -1) front = 0;
+            rear++;
+            arr[rear] = x;
+            System.out.println(x + " enqueue ho gaya.");
+        }
+    }
+
+    // Dequeue - Aage se nikalna
+    void dequeue() {
+        if (front == -1 || front > rear) {
+            System.out.println("Queue Underflow! Queue khali hai.");
+        } else {
+            System.out.println(arr[front] + " dequeue ho gaya.");
+            front++;
+        }
+    }
+
+    // Front - Pehla dekhna
+    void frontElement() {
+        if (front == -1 || front > rear) {
+            System.out.println("Queue khali hai.");
+        } else {
+            System.out.println("Front element: " + arr[front]);
+        }
+    }
+
+    // Display
+    void display() {
+        if (front == -1 || front > rear) {
+            System.out.println("Queue khali hai.");
+        } else {
+            System.out.println("Queue elements:");
+            for (int i = front; i <= rear; i++) {
+                System.out.print(arr[i] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+public class Main2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Queue q = new Queue();
+        int choice, value;
+
+        while (true) {
+            System.out.println("\n1.Enqueue  2.Dequeue  3.Front  4.Display  5.Exit");
+            System.out.print("Choice: ");
+            choice = sc.nextInt();
+
+            if (choice == 1) {
+                System.out.print("Value daalo: ");
+                value = sc.nextInt();
+                q.enqueue(value);
+            } else if (choice == 2) {
+                q.dequeue();
+            } else if (choice == 3) {
+                q.frontElement();
+            } else if (choice == 4) {
+                q.display();
+            } else if (choice == 5) {
+                break;
+            }
+        }
+    }
+}
