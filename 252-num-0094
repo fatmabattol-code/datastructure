@@ -1,0 +1,212 @@
+Q2. Stack Tracing
+
+*Initial Stack: Empty*
+
+Operations:
+1. Push(10)
+2. Push(20)
+3. Push(30)
+4. Pop()
+5. Push(40)
+6. Pop()
+
+1        Push(10)        10 inserted        **[10]**
+2        Push(20)        20 inserted on top        **[10, 20]**
+3        Push(30)        30 inserted on top        **[10, 20, 30]**
+4        Pop()        30 removed (LIFO)        **[10, 20]**
+5        Push(40)        40 inserted on top        **[10, 20, 40]**
+6        Pop()        40 removed (LIFO)        **[10, 20]**
+*Final Answer Q2:*
+- *Final Stack Contents: 10, 20*
+- *Top Element: 20*
+
+
+
+---
+
+ Q4. Queue Tracing - Separate Solution
+
+*Initial Queue: Empty
+
+Operations:
+1. Enqueue(10)
+2. Enqueue(20)
+3. Enqueue(30)
+4. Dequeue()
+5. Enqueue(40)
+6. Dequeue()
+
+
+1        Enqueue(10)        10 inserted at rear        **[10]**
+2        Enqueue(20)        20 inserted at rear        **[10, 20]**
+3        Enqueue(30)        30 inserted at rear        **[10, 20, 30]**
+4        Dequeue()        10 removed from front (FIFO)        **[20, 30]**
+5        Enqueue(40)        40 inserted at rear        **[20, 30, 40]**
+6        Dequeue()        20 removed from front (FIFO)        **[30, 40]**
+*Final Answer Q4:*
+- *Final Queue Contents: 30, 40*
+- *Front Element: 30*
+
+
+Task1:
+
+import java.util.Scanner;
+
+class Stack {
+    int top = -1;
+    int size = 5;
+    int[] arr = new int[size];
+
+    
+    void push(int x) {
+        if (top == size - 1) {
+            System.out.println("Stack Overflow! .");
+        } else {
+            top++;
+            arr[top] = x;
+            System.out.println(x + " push ");
+        }
+    }
+
+    // Pop - Element nikalna
+    void pop() {
+        if (top == -1) {
+            System.out.println("Stack Underflow!.");
+        } else {
+            System.out.println(arr[top] + " poped");
+            top--;
+        }
+    }
+
+    
+    void peek() {
+        if (top == -1) {
+            System.out.println("Stack is empty");
+        } else {
+            System.out.println("Top element: " + arr[top]);
+        }
+    }
+
+    // Display - Sab dikhana
+    void display() {
+        if (top == -1) {
+            System.out.println("Stack is empty.");
+        } else {
+            System.out.println("Stack elements :");
+            for (int i = top; i >= 0; i--) {
+                System.out.println(arr[i]);
+            }
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Stack s = new Stack();
+        int choice, value;
+
+        while (true) {
+            System.out.println("\n1.Push  2.Pop  3.Peek  4.Display  5.Exit");
+            System.out.print("Choice: ");
+            choice = sc.nextInt();
+
+            if (choice == 1) {
+                System.out.print("Value daalo: ");
+                value = sc.nextInt();
+                s.push(value);
+            } else if (choice == 2) {
+                s.pop();
+            } else if (choice == 3) {
+                s.peek();
+            } else if (choice == 4) {
+                s.display();
+            } else if (choice == 5) {
+                break;
+            }
+        }
+    }
+}
+
+Task3:
+
+
+import java.util.Scanner;
+
+class Queue {
+    int front = -1, rear = -1;
+    int size = 5;
+    int[] arr = new int[size];
+
+    // Enqueue - Peeche se daalna
+    void enqueue(int x) {
+        if (rear == size - 1) {
+            System.out.println("Queue Overflow! Queue full hai.");
+        } else {
+            if (front == -1) front = 0;
+            rear++;
+            arr[rear] = x;
+            System.out.println(x + " enqueue .");
+        }
+    }
+
+    
+    void dequeue() {
+        if (front == -1 || front > rear) {
+            System.out.println("Queue Underflow! Queue khali hai.");
+        } else {
+            System.out.println(arr[front] + " dequeue ho gaya.");
+            front++;
+        }
+    }
+
+    
+    void frontElement() {
+        if (front == -1 || front > rear) {
+            System.out.println("Queue khali hai.");
+        } else {
+            System.out.println("Front element: " + arr[front]);
+        }
+    }
+
+    
+    void display() {
+        if (front == -1 || front > rear) {
+            System.out.println("Queue empty");
+        } else {
+            System.out.println("Queue elements:");
+            for (int i = front; i <= rear; i++) {
+                System.out.print(arr[i] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+public class Main2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Queue q = new Queue();
+        int choice, value;
+
+        while (true) {
+            System.out.println("\n1.Enqueue  2.Dequeue  3.Front  4.Display  5.Exit");
+            System.out.print("Choice: ");
+            choice = sc.nextInt();
+
+            if (choice == 1) {
+                System.out.print("Value daalo: ");
+                value = sc.nextInt();
+                q.enqueue(value);
+            } else if (choice == 2) {
+                q.dequeue();
+            } else if (choice == 3) {
+                q.frontElement();
+            } else if (choice == 4) {
+                q.display();
+            } else if (choice == 5) {
+                break;
+            }
+        }
+    }
+}
